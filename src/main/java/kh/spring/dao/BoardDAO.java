@@ -80,7 +80,7 @@ public class BoardDAO {
 	}
 
 	private int getTotalCount() {
-		String sq1 = "selet count(*) from board";
+		String sq1 = "select count(*) from board";
 		return jdbc.queryForObject(sq1, Integer.class);
 	}
 
