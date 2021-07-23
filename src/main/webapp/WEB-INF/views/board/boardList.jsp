@@ -25,7 +25,7 @@
 <script>
 	$(function(){
 		$("#addwrite").on("click",function(){
-			location.href = "/bod/writeProc";
+			location.href = "board/boardWrite";
 		})
         $("#back").on("click",function(){
             location.href = "/home";
