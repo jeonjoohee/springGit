@@ -42,6 +42,7 @@
 
 		</c:when>
 		<c:otherwise>
+<<<<<<< HEAD
 
 <table border=1 align="center">
 				<tr>
@@ -57,6 +58,9 @@
 					<td><button id="dropmember">MemberOut</button></td>
 				</tr>
 			</table>
+=======
+			${login}님 Hi
+>>>>>>> 01341c55c44586ef9c26431eace1b7bdc2235658
 		</c:otherwise>
 	</c:choose>
 </body>
