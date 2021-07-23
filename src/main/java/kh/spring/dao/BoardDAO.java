@@ -39,5 +39,13 @@ public class BoardDAO {
 	 * public List<BoardDTO> boardlist(int cpage) { String sql =
 	 * "select * from board"; }
 	 */
-
+	
+	public int delete(int seq) {
+		String sql = "delete board where seq=?";
+		return jdbc.update(sql,seq);
+	}
+	public int modify(BoardDTO dto) {
+		String sql = "update board set title=?, contents=?, write_date=sysdate where seq=?";
+		return jdbc.queryForObject(sql, Integer.class, dto.getTitle(),dto.getContents(),dto.getSeq());
+	}
 }
