@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import kh.spring.dao.BoardDAO;
 import kh.spring.dto.BoardDTO;
 
+
 @Controller
 @RequestMapping("/bod")
 public class BoardController {
