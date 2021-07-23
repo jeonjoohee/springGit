@@ -23,19 +23,19 @@ public class BoardController {
 	@Autowired
 	private HttpSession session;
 	
-	@RequestMapping("boardWrite")
-	public String boardWrite(BoardDTO dto) {
+	@RequestMapping("writeProc")
+	public String writeProc(BoardDTO dto) {
 		String writer = (String)session.getAttribute("login");		
 		int result = dao.boardWrite(dto);
 		return "redirect:bod/boardlist?cpage=1";
 	}
 	
-	@RequestMapping("boardView")
-	public String boardView(int seq, Model model){
+	@RequestMapping("viewProc")
+	public String viewProc(int seq, Model model){
 		BoardDTO dto = dao.boardView(seq);
 		dao.view_countPlus(seq);
 		model.addAttribute("dto", dto);
-		return "boardView";
+		return "board/boardView";
 	}
 
 	

@@ -22,7 +22,7 @@
 
 <body>
 
-	<form action="/bod/boardWrite" method="post">
+	<form action="/bod/writeProc" method="post">
 		<table border="1">
 			<tr>
 				<td align="center">자유게시판 글 쓰기</td>

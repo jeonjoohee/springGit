@@ -17,7 +17,7 @@
 			$("#frm").attr("action", "/bod/boardModify").submit();
 		})
 		$("#delete").on("click", function() {
-			$("#frm").attr("action", "/bod/boardDelete").submit();
+			$("#frm").attr("action", "/bod/deleteProc").submit();
 		})
 		$("#tolist").on("click", function() {
 			location.href = "/bod/boardlist?cpage=1";
@@ -50,7 +50,7 @@
 				<c:when test="${login.id == dto.writer}">
 					<tr>
 						<td colspan=6>
-							<input type="button" value="수정" id="update">
+							<input type="button" value="수정" id="modify">
 							<input type="button" value="삭제" id="delete"> 
 							<input type="button" value="목록" id="tolist">
 					</tr>
@@ -58,7 +58,7 @@
 				
 				<c:otherwise>
 					<tr>
-						<td colspan=6><input type="button" value="목록으로" id="tolist">
+						<td colspan=6><input type="button" value="목록" id="tolist">
 					</tr>
 				</c:otherwise>
 			</c:choose>
