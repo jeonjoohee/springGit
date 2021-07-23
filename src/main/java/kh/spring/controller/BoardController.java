@@ -45,6 +45,11 @@ public class BoardController {
 	 * System.out.println("요청페이지 : " + cpage); List<BoardDTO> list =
 	 * dao.boardlist(cpage); }
 	 */
+	@RequestMapping("deleteProc")
+	public String deleteProc(int seq){
+		dao.delete(seq);
+		return "board/boardList?cpage=1";
+	}
 	
 	@RequestMapping("boardModify")
 	public String boardModify(int seq) {
