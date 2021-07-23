@@ -17,10 +17,10 @@
 			$("#frm").attr("action", "/bod/boardModify").submit();
 		})
 		$("#delete").on("click", function() {
-			$("#frm").attr("action", "bod/boardDelete").submit();
+			$("#frm").attr("action", "/bod/boardDelete").submit();
 		})
 		$("#tolist").on("click", function() {
-			location.href = "";
+			location.href = "/bod/boardlist?cpage=1";
 		})
 	})
 </script>

@@ -25,18 +25,17 @@ public class BoardController {
 	
 	@RequestMapping("boardWrite")
 	public String boardWrite(BoardDTO dto) {
-		String writer = (String)session.getAttribute("login");
-		session.setAttribute("login", writer);
-		
+		String writer = (String)session.getAttribute("login");		
 		int result = dao.boardWrite(dto);
-		return "redirect:boardlist";
+		return "redirect:bod/boardlist?cpage=1";
 	}
 	
-	@RequestMapping("BoardView")
-	public String BoardView(int seq, Model model){
+	@RequestMapping("boardView")
+	public String boardView(int seq, Model model){
 		BoardDTO dto = dao.boardView(seq);
+		dao.view_countPlus(seq);
 		model.addAttribute("dto", dto);
-		return "view";
+		return "boardView";
 	}
 
 	

@@ -14,7 +14,7 @@
 <script>
 	$(function() {
 		$("#tolist").on("click", function() {
-			location.href = "";
+			location.href = "/bod/boardlist?cpage=1";
 		})
 	})
 </script>
