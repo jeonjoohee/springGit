@@ -7,15 +7,21 @@
 <meta charset="UTF-8">
 <title>Index</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-
-<style>
-</style>
-
-<script>
-</script>
-</head>
-
 <body>
-
+	<form action="/bod/modifyProc" method>
+	<table border=1 align=center>
+		<tr>
+			<th>제목
+			<td><input type="text" name="title" value="">
+		</tr>
+		<tr>
+			<th>내용
+			<td><input type="text" name="contents" value="">
+		</tr>
+		<tr>
+			<td><button>수정완료</button>
+		</tr>
+	</table>
+	</form>
 </body>
 </html>
