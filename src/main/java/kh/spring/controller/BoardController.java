@@ -48,20 +48,20 @@ public class BoardController {
 	@RequestMapping("deleteProc")
 	public String deleteProc(int seq){
 		dao.delete(seq);
-		return "board/boardList?cpage=1";
+		return "bod/boardlist?cpage=1";
 	}
 	
 	@RequestMapping("boardModify")
 	public String boardModify(int seq) {
 		BoardDTO dto = dao.boardView(seq);
 		session.setAttribute("dto", dto);
-		return "board/Modify";
+		return "board/boardModify";
 	}
 	
 	@RequestMapping("modifyProc")
 	public String modifyProc(BoardDTO dto) {
 		dao.modify(dto);
-		return "redirect:board/boardView";
+		return "board/boardView";
 	}
 
 }
