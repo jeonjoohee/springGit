@@ -8,7 +8,7 @@
 <title>Index</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <body>
-	<form action="/bod/modifyProc" method>
+	<form action="/bod/modifyProc" method="post">
 		<table border=1 align=center>
 			<tr>
 				<th>제목
