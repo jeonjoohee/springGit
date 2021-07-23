@@ -30,25 +30,28 @@ public class BoardDAO {
 			@Override
 			public BoardDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
 				BoardDTO dto = new BoardDTO();
+				dto.setSeq(rs.getInt("seq"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContents(rs.getString("contents"));
 				dto.setWriter(rs.getString("writer"));
+				dto.setWrite_date(rs.getDate("write_date"));
+				dto.setView_count(rs.getInt("view_count"));
 				return dto;
 			}
 		}, seq);
 	}
 	
-	private int view_countSearch(int seq) {
-		String sql = "select view_count from board where seq=?";
-		return jdbc.queryForObject(sql, Integer.class, seq);
-	}
-	
-	public int view_countPlus(int seq) {
-		BoardDAO dao = new BoardDAO();
-		int view_count = dao.view_countSearch(seq);
-		String sql = "update board set view_count=? where seq=?";
-		return jdbc.update(sql, view_count+1, seq);
-	}
+//	private int view_countSearch(int seq) {
+//		String sql = "select view_count from board where seq=?";
+//		return jdbc.queryForObject(sql, Integer.class, seq);
+//	}
+//	
+//	public int view_countPlus(int seq) {
+//		BoardDAO dao = new BoardDAO();
+//		int view_count = dao.view_countSearch(seq);
+//		String sql = "update board set view_count=? where seq=?";
+//		return jdbc.update(sql, view_count+1, seq);
+//	}
 	
 	public int delete(int seq) {
 		String sql = "delete board where seq=?";

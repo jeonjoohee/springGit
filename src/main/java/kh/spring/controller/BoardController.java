@@ -32,7 +32,8 @@ public class BoardController {
 	
 	@RequestMapping("writeProc")
 	public String writeProc(BoardDTO dto) {
-		String writer = (String)session.getAttribute("login");		
+		String writer = (String)session.getAttribute("login");	
+		dto.setWriter(writer);
 		int result = dao.boardWrite(dto);
 		return "redirect:/bod/boardlist?cpage=1";
 	}
@@ -40,7 +41,7 @@ public class BoardController {
 	@RequestMapping("viewProc")
 	public String viewProc(int seq, Model model){
 		BoardDTO dto = dao.boardView(seq);
-		dao.view_countPlus(seq);
+		//dao.view_countPlus(seq);
 		model.addAttribute("dto", dto);
 		return "board/boardView";
 	}

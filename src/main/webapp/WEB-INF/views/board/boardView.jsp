@@ -47,7 +47,7 @@
 			</tr>
 			
 			<c:choose>
-				<c:when test="${login.id == dto.writer}">
+				<c:when test="${login == dto.writer}">
 					<tr>
 						<td colspan=6>
 							<input type="button" value="수정" id="modify">
