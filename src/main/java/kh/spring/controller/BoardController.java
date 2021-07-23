@@ -46,9 +46,10 @@ public class BoardController {
 	 * dao.boardlist(cpage); }
 	 */
 	
-	
 	@RequestMapping("boardModify")
-	public String boardModify() {
+	public String boardModify(int seq) {
+		BoardDTO dto = dao.boardView(seq);
+		session.setAttribute("dto", dto);
 		return "board/Modify";
 	}
 	
