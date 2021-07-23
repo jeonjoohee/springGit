@@ -12,6 +12,9 @@
 		$("#btn_signup").on("click", function() {
 			location.href = "/member/signup"
 		})
+		$("#btn_toBoard").on("click", function() {
+			location.href = "/bod/boardlist?cpage=1"
+		})
 	})
 </script>
 
@@ -49,11 +52,11 @@
 				</tr>
 				<tr>
 					<!-- <td><button id="memberList">memberList</button></td> -->
-					<td><button id="toBoard">toBoard</button></td>
-					<td><button id="mypage">My Page</button></td>
+					<td><button id="btn_toBoard">toBoard</button></td>
+					<td><button id="btn_mypage">My Page</button></td>
 					<!-- <td><button id="modify">Modify MyInfo</button></td> -->
-					<td><button id="logout">Logout</button></td>
-					<td><button id="dropmember">MemberOut</button></td>
+					<td><button id="btn_logout">Logout</button></td>
+					<td><button id="btn_dropmember">MemberOut</button></td>
 				</tr>
 			</table>
 		</c:otherwise>
