@@ -65,7 +65,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("boardlist") 
-	public String boardlist(int cpage, Model model) {
+	public String boardlist(int cpage, String key, String word, Model model) {
 		System.out.println("요청페이지 : " + cpage);
 
 		int startNum = ((cpage-1) * BoardConfig.RECORD_COUNT_PER_PAGE) + 1;
