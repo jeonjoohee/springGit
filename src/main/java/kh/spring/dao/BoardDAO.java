@@ -59,7 +59,7 @@ public class BoardDAO {
 	}
 	public int modify(BoardDTO dto) {
 		String sql = "update board set title=?, contents=?, write_date=sysdate where seq=?";
-		return jdbc.queryForObject(sql, Integer.class, dto.getTitle(),dto.getContents(),dto.getSeq());
+		return jdbc.update(sql, dto.getTitle(),dto.getContents(),dto.getSeq());
 	}
 	
 	public List<BoardDTO> boardlist(int startNum, int endNum) { 

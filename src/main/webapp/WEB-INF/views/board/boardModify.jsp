@@ -6,23 +6,32 @@
 <head>
 <meta charset="UTF-8">
 <title>Index</title>
+<style>
+#title{width:90%;}
+</style>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <body>
 	<form action="/bod/modifyProc" method="post">
 		<table border=1 align=center>
+		    <tr>
+            <td>No
+            <td>${dto.seq}<input type="hidden" name="seq" value="${dto.seq}">
+            <td>Writer
+            <td>${dto.writer}
+            <td>Date
+            <td>${dto.write_date}
+         </tr>
+         <tr>
+            <td colspan=2>Title
+            <td colspan=4><input type="text" name="title" id="title" value="${dto.title}">
+         </tr>
+         <tr>
+            <td colspan=6><textarea cols="80" rows="15" name="contents">${dto.contents}</textarea>
+         </tr>
 			<tr>
-				<th>제목
-				<td><input type="text" name="title" value="${dto.title}">
-			</tr>
-			<tr>
-				<th>내용
-				<td><input type="text" name="contents" value="${dto.contents}">
-			</tr>
-			<tr>
-				<td><button>수정완료</button>
+				<td colspan=6 align=center><button>수정완료</button>
 			</tr>
 		</table>
-		<input type="hidden" name="seq" value="${dto.seq}">
 	</form>
 </body>
 </html>

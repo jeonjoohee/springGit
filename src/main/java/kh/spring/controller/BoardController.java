@@ -50,7 +50,7 @@ public class BoardController {
 	@RequestMapping("deleteProc")
 	public String deleteProc(int seq){
 		dao.delete(seq);
-		return "bod/boardlist?cpage=1";
+		return "redirect:/bod/boardlist?cpage=1";
 	}
 	
 	@RequestMapping("boardModify")
@@ -63,7 +63,8 @@ public class BoardController {
 	@RequestMapping("modifyProc")
 	public String modifyProc(BoardDTO dto) {
 		dao.modify(dto);
-		return "board/boardView";
+		int seq = dto.getSeq();
+		return "redirect:/bod/viewProc?seq="+seq;
 	}
 	
 	@RequestMapping("boardlist") 
