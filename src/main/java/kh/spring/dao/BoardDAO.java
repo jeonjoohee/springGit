@@ -10,8 +10,9 @@ public class BoardDAO {
 	@Autowired
 	private JdbcTemplate jdbc;
 	
-	public List<BoardDTO> boardlist(int cpage) {
-		String sql = "select * from board";
-	}
+	/*
+	 * public List<BoardDTO> boardlist(int cpage) { String sql =
+	 * "select * from board"; }
+	 */
 	
 }
