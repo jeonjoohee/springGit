@@ -22,10 +22,10 @@ public class BoardController {
 	@Autowired
 	private HttpSession session;
 	
-	@RequestMapping("/boardlist")
-	public List<BoardDTO> boardlist(int cpage) {
-		System.out.println("요청페이지 : " + cpage);
-		List<BoardDTO> list = dao.boardlist(cpage);
-	}
+	/*
+	 * @RequestMapping("/boardlist") public List<BoardDTO> boardlist(int cpage) {
+	 * System.out.println("요청페이지 : " + cpage); List<BoardDTO> list =
+	 * dao.boardlist(cpage); }
+	 */
 
 }
