@@ -17,10 +17,10 @@
 			$("#frm").attr("action", "/bod/boardModify").submit();
 		})
 		$("#delete").on("click", function() {
-			$("#frm").attr("action", "bod/boardDelete").submit();
+			$("#frm").attr("action", "/bod/deleteProc").submit();
 		})
 		$("#tolist").on("click", function() {
-			location.href = "";
+			location.href = "/bod/boardlist?cpage=1";
 		})
 	})
 </script>
@@ -32,25 +32,25 @@
 		<table border="1">
 			<tr>
 				<td>No
-				<td>${list.seq}<input type="hidden" name="seq" value="${list.seq}">
+				<td>${dto.seq}<input type="hidden" name="seq" value="${dto.seq}">
 				<td>Writer
-				<td>${list.writer}
+				<td>${dto.writer}
 				<td>Date
-				<td>${list.write_date}
+				<td>${dto.write_date}
 			</tr>
 			<tr>
 				<td colspan=3>Title
-				<td colspan=3><input type="text" size="50" name="title" value="${list.title}">
+				<td colspan=3><input type="text" size="50" name="title" value="${dto.title}">
 			</tr>
 			<tr>
-				<td colspan=6><textarea cols="80" rows="15" name="contents">${list.contents}</textarea>
+				<td colspan=6><textarea cols="80" rows="15" name="contents">${dto.contents}</textarea>
 			</tr>
 			
 			<c:choose>
-				<c:when test="${login.id == list.writer}">
+				<c:when test="${login.id == dto.writer}">
 					<tr>
 						<td colspan=6>
-							<input type="button" value="수정" id="update">
+							<input type="button" value="수정" id="modify">
 							<input type="button" value="삭제" id="delete"> 
 							<input type="button" value="목록" id="tolist">
 					</tr>
@@ -58,7 +58,7 @@
 				
 				<c:otherwise>
 					<tr>
-						<td colspan=6><input type="button" value="목록으로" id="tolist">
+						<td colspan=6><input type="button" value="목록" id="tolist">
 					</tr>
 				</c:otherwise>
 			</c:choose>

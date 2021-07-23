@@ -34,6 +34,19 @@ public class BoardDAO {
 			}
 		}, Integer.class, seq);
 	}
+	
+	private int view_countSearch(int seq) {
+		String sql = "select view_count from board where seq=?";
+		return jdbc.queryForObject(sql, Integer.class, seq);
+	}
+	
+	public int view_countPlus(int seq) {
+		BoardDAO dao = new BoardDAO();
+		int view_count = dao.view_countSearch(seq);
+		String sql = "update board set view_count=? where seq=?";
+		return jdbc.update(sql, view_count+1, seq);
+	}
+	
 
 	/*
 	 * public List<BoardDTO> boardlist(int cpage) { String sql =
