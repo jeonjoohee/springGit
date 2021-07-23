@@ -70,7 +70,7 @@ public class BoardController {
 		List<String> navi = dao.navi(cpage);
 
 		model.addAttribute("list", list);
-		model.addAttribute("navi", navi);
+		model.addAttribute("navis", navi);
 
 		return "board/boardList";
 	}

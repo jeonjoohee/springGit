@@ -25,13 +25,13 @@
 <script>
 	$(function(){
 		$("#addwrite").on("click",function(){
-			location.href = "board/write.jsp";
+			location.href = "/bod/writeProc";
 		})
         $("#back").on("click",function(){
-            location.href = "index.jsp";
+            location.href = "/home";
         })
         $("#backall").on("click",function(){
-            location.href = "boardlist.board?cpage=1";
+            location.href = "/bod/boardlist?cpage=1";
         })
 	})
 </script>
@@ -72,7 +72,7 @@
         <c:forEach var="list" items="${list}">
             <tr id="body">
                 <td>${list.seq}</td>
-                <td><a href="${pageContext.request.contextPath}/view.board?seq=${list.seq}">${list.title}</a></td>
+                <td><a href="/bod/viewProc?seq=${list.seq}">${list.title}</a></td>
                 <td>${list.writer}</td>
                 <td>${list.write_date}</td>
                 <td>${list.view_count}</td>
