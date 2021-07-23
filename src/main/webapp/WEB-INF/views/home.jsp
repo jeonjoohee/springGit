@@ -42,8 +42,8 @@
 
 		</c:when>
 		<c:otherwise>
-${login }님 Hi
-</c:otherwise>
+			${login}님 Hi
+		</c:otherwise>
 	</c:choose>
 </body>
 </html>
