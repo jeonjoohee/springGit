@@ -76,7 +76,7 @@ public class BoardDAO {
 
 				return dto;
 			}
-		});
+		},startNum,endNum);
 	}
 
 	private int getTotalCount() {
