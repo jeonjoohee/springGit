@@ -35,7 +35,7 @@ public class BoardDAO {
 				dto.setWriter(rs.getString("writer"));
 				return dto;
 			}
-		}, Integer.class, seq);
+		}, seq);
 	}
 	
 	private int view_countSearch(int seq) {
