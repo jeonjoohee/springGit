@@ -17,10 +17,10 @@ td {
 <script>
 	$(function() {
 		$("#modify").on("click", function() {
-			$("#frm").attr("action", "/bod/modify").submit();
+			$("#frm").attr("action", "/bod/BoardModify").submit();
 		})
 		$("#delete").on("click", function() {
-			$("#frm").attr("action", "/bod/delete").submit();
+			$("#frm").attr("action", "/bod/BoardDelete").submit();
 		})
 		$("#tolist").on("click", function() {
 			location.href = "/bod/boardlist";

@@ -18,7 +18,10 @@ public class BoardController {
 	@Autowired
 	private HttpSession session;
 
-	
+	@RequestMapping("write")
+	public String write() {
+		
+	}
 
 
 }

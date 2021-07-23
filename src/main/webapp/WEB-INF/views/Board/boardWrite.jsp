@@ -16,7 +16,7 @@
 </head>
 
 <body>
-	<form action="/bod/write" method="post">
+	<form action="/bod/boardWrite" method="post">
 		<table border="1" align="center">
 			<tr>
 				<td align="center">Board Write
