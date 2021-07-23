@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kh.spring.config.BoardConfig;
@@ -33,7 +34,7 @@ public class BoardController {
 	public String writeProc(BoardDTO dto) {
 		String writer = (String)session.getAttribute("login");		
 		int result = dao.boardWrite(dto);
-		return "redirect:bod/boardlist?cpage=1";
+		return "redirect:/bod/boardlist?cpage=1";
 	}
 	
 	@RequestMapping("viewProc")
@@ -79,5 +80,11 @@ public class BoardController {
 
 		return "board/boardList";
 	}
+	
+	@ExceptionHandler
+	   public String ExceptionHandler(Exception e) {
+	      e.printStackTrace();
+	      return "error";
+	   }
 
 }
