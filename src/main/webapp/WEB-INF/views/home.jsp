@@ -15,6 +15,20 @@
 		$("#btn_toBoard").on("click", function() {
 			location.href = "/bod/boardlist?cpage=1"
 		})
+		$("#btn_mypage").on("click", function() {
+			location.href = "/member/mypage"
+		})
+		$("#btn_logout").on("click", function() {
+			location.href = "/member/logout"
+		})
+		$("#btn_dropmember").on("click",function() {
+							let result;
+							result = confirm("정말로 회원을 탈퇴하시겠습니까?");
+							if (result == true) {
+								location.href = "/member/dropmember"
+							}
+							
+						})
 	})
 </script>
 
