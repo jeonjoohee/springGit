@@ -26,7 +26,7 @@ public class BoardDAO {
 
 	public BoardDTO boardView(int seq) {
 		String sql = "select * from board where seq=?";
-		return (BoardDTO) jdbc.query(sql, new RowMapper<BoardDTO>() {
+		return jdbc.queryForObject(sql, new RowMapper<BoardDTO>() {
 			@Override
 			public BoardDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
 				BoardDTO dto = new BoardDTO();

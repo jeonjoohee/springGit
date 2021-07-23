@@ -24,6 +24,11 @@ public class BoardController {
 	@Autowired
 	private HttpSession session;
 	
+	@RequestMapping("boardWrite")
+	public String boardWrite() {
+		return "board/boardWrite";
+	}
+	
 	@RequestMapping("writeProc")
 	public String writeProc(BoardDTO dto) {
 		String writer = (String)session.getAttribute("login");		
