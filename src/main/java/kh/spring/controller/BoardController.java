@@ -39,11 +39,6 @@ public class BoardController {
 	}
 
 	
-	/*
-	 * @RequestMapping("/boardlist") public List<BoardDTO> boardlist(int cpage) {
-	 * System.out.println("요청페이지 : " + cpage); List<BoardDTO> list =
-	 * dao.boardlist(cpage); }
-	 */
 	@RequestMapping("deleteProc")
 	public String deleteProc(int seq){
 		dao.delete(seq);
@@ -61,6 +56,22 @@ public class BoardController {
 	public String modifyProc(BoardDTO dto) {
 		dao.modify(dto);
 		return "board/boardView";
+	}
+	
+	@RequestMapping("boardlist") 
+	public String boardlist(int cpage, Model model) {
+		System.out.println("요청페이지 : " + cpage);
+
+		int startNum = ((cpage-1) * BoardConfig.RECORD_COUNT_PER_PAGE) + 1;
+		int endNum = cpage * BoardConfig.RECORD_COUNT_PER_PAGE;
+
+		List<BoardDTO> list = dao.boardlist(startNum, endNum); 
+		List<String> navi = dao.navi(cpage);
+
+		model.addAttribute("list", list);
+		model.addAttribute("navi", navi);
+
+		return "board/boardList";
 	}
 
 }
