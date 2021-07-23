@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kh.spring.dao.BoardDAO;
@@ -22,10 +23,21 @@ public class BoardController {
 	@Autowired
 	private HttpSession session;
 	
-//	@RequestMapping("write")
-//	public String write() {
-//		
-//	}
+	@RequestMapping("boardWrite")
+	public String boardWrite(BoardDTO dto) {
+		String writer = session.getId();
+		int result = dao.boardWrite(dto);
+		return "redirect:boardlist";
+	}
+	
+	@RequestMapping("BoardView")
+	public String BoardView(int seq, Model model){
+		String writer = session.getId();
+
+		BoardDTO list = dao.boardView(seq);
+		model.addAttribute("list", list);
+		return "view";
+	}
 
 	
 	/*
