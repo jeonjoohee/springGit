@@ -22,6 +22,12 @@ public class BoardController {
 	@Autowired
 	private HttpSession session;
 	
+//	@RequestMapping("write")
+//	public String write() {
+//		
+//	}
+
+	
 	/*
 	 * @RequestMapping("/boardlist") public List<BoardDTO> boardlist(int cpage) {
 	 * System.out.println("요청페이지 : " + cpage); List<BoardDTO> list =
