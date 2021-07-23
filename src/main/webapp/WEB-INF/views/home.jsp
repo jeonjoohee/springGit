@@ -5,10 +5,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Home</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 <body>
- 	 깃 연습입니다. 
+ 	 <table border=1 align=center>
+ 	 	<tr>
+ 	 		<th>로그인하기
+ 	 	</tr>
+ 	 	<tr>
+ 	 		<td><input type="text" placeholder="ID 입력" name="id">
+ 	 	</tr>
+ 	 	<tr>
+ 	 		<td><input type="text" placeholder="PW 입력" name="pw">
+ 	 	</tr>
+ 	 	<tr>
+ 	 		<td align=center>
+ 	 		<button>로그인하기</button>
+ 	 		<button>회원가입</button>
+ 	 	</tr>
+ 	 </table>
 </body>
 </html>
