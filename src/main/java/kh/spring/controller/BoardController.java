@@ -45,5 +45,18 @@ public class BoardController {
 	 * System.out.println("요청페이지 : " + cpage); List<BoardDTO> list =
 	 * dao.boardlist(cpage); }
 	 */
+	
+	@RequestMapping("boardModify")
+	public String boardModify(int seq) {
+		BoardDTO dto = dao.boardView(seq);
+		session.setAttribute("dto", dto);
+		return "board/Modify";
+	}
+	
+	@RequestMapping("modifyProc")
+	public String modifyProc(BoardDTO dto) {
+		dao.modify(dto);
+		return "redirect:board/boardView";
+	}
 
 }
