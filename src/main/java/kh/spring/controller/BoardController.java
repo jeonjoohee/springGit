@@ -71,7 +71,6 @@ public class BoardController {
 		int startNum = ((cpage-1) * BoardConfig.RECORD_COUNT_PER_PAGE) + 1;
 		int endNum = cpage * BoardConfig.RECORD_COUNT_PER_PAGE;
 
-		if()
 		List<BoardDTO> list = dao.boardlist(startNum, endNum); 
 		List<String> navi = dao.navi(cpage);
 
