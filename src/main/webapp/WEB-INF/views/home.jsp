@@ -24,7 +24,7 @@
 			<form action="/member/loginProc" method="post">
 				<table border=1 align=center>
 					<tr>
-						<th> 2조 보드프로젝트 로그인
+						<th>2조 보드프로젝트 로그인
 					</tr>
 					<tr>
 						<td><input type=text placeholder="input id" name=id>
@@ -42,7 +42,20 @@
 
 		</c:when>
 		<c:otherwise>
-			${login}님 Hi
+
+			<table border=1 align="center">
+				<tr>
+					<th colspan=4>${login }님안녕하세요
+				</tr>
+				<tr>
+					<!-- <td><button id="memberList">memberList</button></td> -->
+					<td><button id="toBoard">toBoard</button></td>
+					<td><button id="mypage">My Page</button></td>
+					<!-- <td><button id="modify">Modify MyInfo</button></td> -->
+					<td><button id="logout">Logout</button></td>
+					<td><button id="dropmember">MemberOut</button></td>
+				</tr>
+			</table>
 		</c:otherwise>
 	</c:choose>
 </body>
