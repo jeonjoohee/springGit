@@ -45,14 +45,13 @@
 
 			<table border=1 align="center">
 				<tr>
-					<th colspan=7>${login }님안녕하세요
+					<th colspan=4>${login }님안녕하세요
 				</tr>
 				<tr>
-					<td><button id="memberList">memberList</button></td>
+					<!-- <td><button id="memberList">memberList</button></td> -->
 					<td><button id="toBoard">toBoard</button></td>
-					<td><button id="translator">translator</button></td>
 					<td><button id="mypage">My Page</button></td>
-					<td><button id="modify">Modify MyInfo</button></td>
+					<!-- <td><button id="modify">Modify MyInfo</button></td> -->
 					<td><button id="logout">Logout</button></td>
 					<td><button id="dropmember">MemberOut</button></td>
 				</tr>
