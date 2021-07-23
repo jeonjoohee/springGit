@@ -23,10 +23,15 @@ public class MemberDAO {
 		return jdbc.queryForObject(sql, Integer.class,id);
 
 	}
-	public Integer login(String id,String pw) {
+	public int login(String id,String pw) {
 		String sql = "select count(*) from member where id=? and pw=?";
 		
 		return jdbc.queryForObject(sql, Integer.class,id,pw);
+	}
+	public int dropMember(String id) {
+		System.out.println(id);
+		String sql = "delete from member where id=?";
+		return jdbc.update(sql,id);
 	}
 	
 }

@@ -40,6 +40,27 @@ public class MemberController {
 
 		return "redirect:/";
 	}
+	@RequestMapping("mypage")
+	public String mypage(){
+		System.out.println("마페");
+		return "member/mypage";
+	}
+	@RequestMapping("logout")
+	public String logout(){
+		System.out.println("로그아웃");
+		session.invalidate();
+		return "redirect:/";
+	}
+	@RequestMapping("dropmember")
+	public String dropmember(){
+		System.out.println("탈퇴");
+		String id = (String) session.getAttribute("login");
+		
+		dao.dropMember(id);
+		session.invalidate();
+		
+		return "redirect:/";
+	}
 
 	@ResponseBody
 	@RequestMapping("duplCheck")
