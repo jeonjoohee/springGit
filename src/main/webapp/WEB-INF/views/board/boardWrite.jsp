@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글 작성</title>
+<title>Index</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 <style>
@@ -16,33 +16,6 @@
 </head>
 
 <body>
-	<form action="/bod/boardWrite" method="post">
-		<table border="1" align="center">
-			<tr>
-				<td align="center">Board Write
-			</tr>
-			<tr>
-				<td><input type="text" size="50" placeholder="제목을 입력하세요." name="title">
-			</tr>
-			<tr>
-				<td><textarea cols="80" rows="15" placeholder="내용을 입력하세요." name="contents"></textarea>
-			</tr>
-			<tr>
-				<td align="right">
-					<input type="submit" value="글쓰기" id="write">
-					<input type="button" value="목록으로" id="list"></td>
-			</tr>
-		</table>
-	</form>
-
-	<c:choose>
-		<c:when test="${result>0}">
-			<script>
-				alert("글쓰기에 성공하셨습니다");
-				location.href = "/bod/boardlist";
-			</script>
-		</c:when>
-	</c:choose>
 
 </body>
 </html>

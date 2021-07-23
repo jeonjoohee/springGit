@@ -17,17 +17,17 @@ public class BoardDAO {
 
 	@Autowired
 	private JdbcTemplate jdbc;
-	
+
 	public int write(BoardDTO dto) {
 		String sql = "insert into board values (board_seq.nextval, ?, ?, ?, sysdate, 0)";
 		return jdbc.update(sql, dto.getTitle(), dto.getContents(), dto.getWriter());
 	}
-	
+
 	public List<BoardDTO> view(int seq) {
 		String sql = "select * from board where seq=?";
 		return jdbc.query(sql, new RowMapper<BoardDTO>() {
 			@Override
-			public BoardDTO mapRow(ResultSet rs, int rowNum) throws SQLException{
+			public BoardDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
 				BoardDTO dto = new BoardDTO();
 				dto.setTitle(rs.getString("title"));
 				dto.setContents(rs.getString("contents"));
@@ -36,6 +36,10 @@ public class BoardDAO {
 			}
 		}, Integer.class, seq);
 	}
-	
-	
+
+	/*
+	 * public List<BoardDTO> boardlist(int cpage) { String sql =
+	 * "select * from board"; }
+	 */
+
 }

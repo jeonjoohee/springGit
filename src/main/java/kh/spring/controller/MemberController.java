@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import kh.spring.dao.MemberDAO;
 
 @Controller
-@RequestMapping("/mem")
+@RequestMapping("/member")
 public class MemberController {
 
 	@Autowired
@@ -17,7 +17,11 @@ public class MemberController {
 
 	@Autowired
 	private HttpSession session;
-	
-	
+
+	@RequestMapping("signup")
+	public String signup() {
+		return "member/signup";
+	}
+
 
 }
