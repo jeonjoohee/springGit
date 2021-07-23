@@ -33,11 +33,12 @@ public class BoardController {
 	 * System.out.println("요청페이지 : " + cpage); List<BoardDTO> list =
 	 * dao.boardlist(cpage); }
 	 */
+	
+	
 	@RequestMapping("boardModify")
 	public String boardModify() {
 		return "board/Modify";
 	}
-	
 	
 	@RequestMapping("modifyProc")
 	public String modifyProc(BoardDTO dto) {
