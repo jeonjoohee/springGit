@@ -89,10 +89,10 @@
 			<c:forEach var="navi" items="${navis}" varStatus="s"> <!-- varStatus : var의 상태, 정보를 기억, 알수 있다. -->
 				<c:choose>
 					<c:when test="${navi == '>'}">
-						<a href="/bod/boardlist??cpage=${navis[s.index-1]+1}">${navi}</a>
+						<a href="/bod/boardlist?cpage=${navis[s.index-1]+1}">${navi}</a>
 					</c:when>
 					<c:when test="${navi == '<'}">
-						<a href="/bod/boardlist??cpage=${navis[s.index+1]-1}">${navi}</a>
+						<a href="/bod/boardlist?cpage=${navis[s.index+1]-1}">${navi}</a>
 					</c:when>
 					<c:otherwise>
 						<a href="/bod/boardlist?cpage=${navi}">${navi}</a>
