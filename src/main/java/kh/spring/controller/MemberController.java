@@ -46,7 +46,7 @@ public class MemberController {
 	public String mypage(){
 		System.out.println("마페");
 		String id = (String) session.getAttribute("login");
-		List<MemberDTO> dto = dao.mypage(id);
+		MemberDTO dto = dao.mypage(id);
 
 		session.setAttribute("mydto", dto);
 		//session.getId();		

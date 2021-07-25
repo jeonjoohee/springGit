@@ -33,10 +33,10 @@ public class MemberDAO {
 		
 		return jdbc.queryForObject(sql, Integer.class,id,pw);
 	}
-	public List<MemberDTO> mypage(String id) {
+	public MemberDTO mypage(String id) {
 		String sql = "select * from member where id=?";
 		
-		return jdbc.query(sql, new RowMapper<MemberDTO>() {
+		return jdbc.queryForObject(sql, new RowMapper<MemberDTO>() {
 			@Override
 			public MemberDTO mapRow(ResultSet rs, int rowNum) throws SQLException{
 				MemberDTO dto = new MemberDTO();
