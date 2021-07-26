@@ -1,5 +1,7 @@
 package kh.spring.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +45,11 @@ public class MemberController {
 	@RequestMapping("mypage")
 	public String mypage(){
 		System.out.println("마페");
+		String id = (String) session.getAttribute("login");
+		MemberDTO dto = dao.mypage(id);
+
+		session.setAttribute("mydto", dto);
+		//session.getId();		
 		return "member/mypage";
 	}
 	@RequestMapping("logout")
@@ -61,6 +68,8 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
+	
+	
 
 	@ResponseBody
 	@RequestMapping("duplCheck")
