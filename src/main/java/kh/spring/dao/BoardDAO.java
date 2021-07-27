@@ -20,6 +20,7 @@ public class BoardDAO {
 	private JdbcTemplate jdbc;
 
 	public int boardWrite(BoardDTO dto) {
+
 		String sql = "insert into board values (?, ?, ?, ?, sysdate, 0)";
 		return jdbc.update(sql,dto.getSeq(), dto.getTitle(), dto.getContents(), dto.getWriter());
 	}

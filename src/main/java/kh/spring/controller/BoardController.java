@@ -1,6 +1,8 @@
 package kh.spring.controller;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -49,7 +51,6 @@ public class BoardController {
 		fdto.setParent(seq);
 		
 		fservice.upload(realPath,fdto,file);
-		
 		return "redirect:/bod/boardlist?cpage=1";
 	}
 
