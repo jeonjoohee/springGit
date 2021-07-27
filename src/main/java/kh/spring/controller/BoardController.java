@@ -126,8 +126,6 @@ public class BoardController {
 	public String boardlist(int cpage, String key, String word, Model model) {
 		System.out.println("요청페이지 : " + cpage);
 
-
-
 		List<BoardDTO> list = bservice.boardlist(cpage); 
 		List<String> navi = bservice.navi(cpage);
 
