@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -29,10 +29,11 @@
 <body>
 
 	<form action="" method="post" id="frm">
-		<table border="1">
+		<table border="1" align="center">
 			<tr>
 				<td>No
-				<td>${dto.seq}<input type="hidden" name="seq" value="${dto.seq}">
+				<td>${dto.seq}<input type="hidden" name="seq"
+					value="${dto.seq}">
 				<td>Writer
 				<td>${dto.writer}
 				<td>Date
@@ -40,22 +41,29 @@
 			</tr>
 			<tr>
 				<td colspan=3>Title
-				<td colspan=3><input type="text" size="50" name="title" value="${dto.title}">
+				<td colspan=3><input type="text" size="50" name="title"
+					value="${dto.title}">
 			</tr>
 			<tr>
 				<td colspan=6><textarea cols="80" rows="15" name="contents">${dto.contents}</textarea>
 			</tr>
-			
+
+			<c:forEach var="f" items="${fdto}">
+				<tr>
+					<td colspan=3>File
+					<td colspan=3><a href="/bod/download?seq=${f.seq}&sysName=${f.sysName}&oriName=${f.oriName}">${f.oriName}</a>
+				</tr>
+			</c:forEach>
+
 			<c:choose>
 				<c:when test="${login == dto.writer}">
 					<tr>
-						<td colspan=6>
-							<input type="button" value="수정" id="modify">
-							<input type="button" value="삭제" id="delete"> 
-							<input type="button" value="목록" id="tolist">
+						<td colspan=6><input type="button" value="수정" id="modify">
+							<input type="button" value="삭제" id="delete"> <input
+							type="button" value="목록" id="tolist">
 					</tr>
 				</c:when>
-				
+
 				<c:otherwise>
 					<tr>
 						<td colspan=6><input type="button" value="목록" id="tolist">

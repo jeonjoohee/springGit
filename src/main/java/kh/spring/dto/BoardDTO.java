@@ -15,6 +15,16 @@ public class BoardDTO {
 		super();
 	}
 	
+	
+	public BoardDTO(int seq, String title, String contents, String writer) {
+		super();
+		this.seq = seq;
+		this.title = title;
+		this.contents = contents;
+		this.writer = writer;
+	}
+
+
 	public BoardDTO(int seq, String title, String contents, String writer, Date write_date, int view_count) {
 		this.seq = seq;
 		this.title = title;
