@@ -37,8 +37,8 @@ public class BoardService {
 	}
 	
 	public List<BoardDTO> boardlist(int cpage) {
-		int startNum = ((cpage-1) * BoardConfig.RECORD_COUNT_PER_PAGE) + 1;
 		int endNum = cpage * BoardConfig.RECORD_COUNT_PER_PAGE;
+		int startNum = (endNum - BoardConfig.RECORD_COUNT_PER_PAGE) - 1;
 		
 		return dao.boardlist(startNum, endNum);
 	}
@@ -70,20 +70,20 @@ public class BoardService {
 		int endNavi = startNavi + (pageNaviCount -1);
 		if(endNavi > pageTotalCount) { endNavi = pageTotalCount; }
 
-		boolean needPrev = false;
-		boolean needNext = false;
-		if(startNavi==1) {needNext = true;}
-		if(endNavi==pageTotalCount) {needPrev = true;}
+		boolean needPrev = true;
+		boolean needNext = true;
+		if (startNavi == 1) {needPrev = false;}
+		if (endNavi == pageTotalCount) {needNext = false;}
 
 		List<String> pageNavi = new ArrayList<>(); // 전체 페이지의 수를 담는 배열
 
-		if(needPrev) {pageNavi.add("<");} 
+		if (needPrev) {pageNavi.add("<");}
 
-		for(int i=startNavi; i<=endNavi; i++) {
+		for (int i = startNavi; i <= endNavi; i++) {
 			pageNavi.add(String.valueOf(i));
 		}
 
-		if(needNext) {pageNavi.add(">"); }
+		if (needNext) {pageNavi.add(">");}
 
 		return pageNavi;
 	}

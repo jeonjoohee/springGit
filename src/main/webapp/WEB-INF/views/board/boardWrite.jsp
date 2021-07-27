@@ -24,7 +24,7 @@
 
 	<form action="/bod/writeProc" method="post"
 		enctype="multipart/form-data">
-		<table border="1">
+		<table border="1" align="center">
 			<tr>
 				<td align="center">자유게시판 글 쓰기</td>
 			</tr>

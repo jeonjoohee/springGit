@@ -72,7 +72,7 @@ public class BoardDAO {
 	}
 	
 	public List<BoardDTO> boardlist(int startNum, int endNum) { 
-		String sql = "select * from (select row_number() over (order by seq desc) as rnum, "
+		String sql = "select * from (select row_number() over (order by seq desc) rnum, "
 				+ "seq, title, contents, writer, write_date, view_count from board) where rnum between ? and ?"; 
 		return jdbc.query(sql, new RowMapper<BoardDTO>() {
 			@Override

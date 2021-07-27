@@ -29,7 +29,7 @@
 <body>
 
 	<form action="" method="post" id="frm">
-		<table border="1">
+		<table border="1" align="center">
 			<tr>
 				<td>No
 				<td>${dto.seq}<input type="hidden" name="seq"
