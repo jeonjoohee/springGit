@@ -38,7 +38,7 @@ public class BoardService {
 	
 	public List<BoardDTO> boardlist(int cpage) {
 		int endNum = cpage * BoardConfig.RECORD_COUNT_PER_PAGE;
-		int startNum = (endNum - BoardConfig.RECORD_COUNT_PER_PAGE) - 1;
+		int startNum = endNum - (BoardConfig.RECORD_COUNT_PER_PAGE- 1) ;
 		
 		return dao.boardlist(startNum, endNum);
 	}
