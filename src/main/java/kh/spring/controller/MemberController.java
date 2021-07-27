@@ -11,13 +11,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.spring.dao.MemberDAO;
 import kh.spring.dto.MemberDTO;
+import kh.spring.service.MemberService;
 
 @Controller
 @RequestMapping("/member")
 public class MemberController {
 
+//	@Autowired
+//	private MemberDAO dao;
+	
 	@Autowired
-	private MemberDAO dao;
+	private MemberService mservice;
 
 	@Autowired
 	private HttpSession session;
@@ -29,12 +33,12 @@ public class MemberController {
 
 	@RequestMapping("signupProc")
 	public String signupProc(MemberDTO dto){
-		dao.insert(dto);
+		mservice.insert(dto);
 		return "redirect:/";
 	}
 	@RequestMapping("loginProc")
 	public String loginProc(String id, String pw){
-		int result = dao.login(id, pw);
+		int result = mservice.login(id, pw);
 
 		if(result > 0) {
 			session.setAttribute("login", id);
@@ -46,7 +50,7 @@ public class MemberController {
 	public String mypage(){
 		System.out.println("마페");
 		String id = (String) session.getAttribute("login");
-		MemberDTO dto = dao.mypage(id);
+		MemberDTO dto = mservice.mypage(id);
 
 		session.setAttribute("mydto", dto);
 		//session.getId();		
@@ -63,7 +67,7 @@ public class MemberController {
 		System.out.println("탈퇴");
 		String id = (String) session.getAttribute("login");
 		
-		dao.dropMember(id);
+		mservice.dropMember(id);
 		session.invalidate();
 		
 		return "redirect:/";
@@ -76,7 +80,7 @@ public class MemberController {
 	public String duplCheck(String id)  {
 		System.out.println(id);
 
-		int result = dao.idDuplCheck(id);
+		int result = mservice.idDuplCheck(id);
 
 		return String.valueOf(result);
 	}
