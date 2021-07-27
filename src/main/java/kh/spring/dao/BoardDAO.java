@@ -20,10 +20,15 @@ public class BoardDAO {
 	private JdbcTemplate jdbc;
 
 	public int boardWrite(BoardDTO dto) {
-		String sql = "insert into board values (board_seq.nextval, ?, ?, ?, sysdate, 0)";
-		return jdbc.update(sql, dto.getTitle(), dto.getContents(), dto.getWriter());
-	}
+	      String sql = "insert into board values (?, ?, ?, ?, sysdate, 0)";
+	      return jdbc.update(sql, dto.getSeq(),dto.getTitle(), dto.getContents(), dto.getWriter());
+	   }
 
+	public int seqNextval() {
+	      String sql ="select board_seq.nextval from dual";
+	      return jdbc.queryForObject(sql, Integer.class);
+	   }
+	
 	public BoardDTO boardView(int seq) {
 		String sql = "select * from board where seq=?";
 		return jdbc.queryForObject(sql, new RowMapper<BoardDTO>() {

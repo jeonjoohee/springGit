@@ -22,7 +22,7 @@
 
 <body>
 
-	<form action="/bod/writeProc" method="post">
+	<form action="/bod/writeProc" method="post" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
 				<td align="center">자유게시판 글 쓰기</td>
@@ -31,7 +31,10 @@
 				<td><input type="text" size="50" placeholder="제목을 입력하세요." name="title">
 			</tr>
 			<tr>
-				<td><textarea cols="80" rows="15" placeholder="내용을 입력하세요." name="contents"></textarea>
+			
+				<td>
+				<input type="file" name="file" multiple>
+				<textarea cols="80" rows="15" placeholder="내용을 입력하세요." name="contents"></textarea>
 			</tr>
 			<tr>
 				<td align="right">

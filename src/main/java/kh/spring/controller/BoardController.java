@@ -1,6 +1,8 @@
 package kh.spring.controller;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,10 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import kh.spring.config.BoardConfig;
 import kh.spring.dao.BoardDAO;
+import kh.spring.dao.FileDAO;
 import kh.spring.dto.BoardDTO;
+import kh.spring.dto.FileDTO;
 
 
 @Controller
@@ -23,6 +28,9 @@ public class BoardController {
 	private BoardDAO dao;
 	
 	@Autowired
+	private FileDAO fdao;
+	
+	@Autowired
 	private HttpSession session;
 	
 	@RequestMapping("boardWrite")
@@ -31,10 +39,28 @@ public class BoardController {
 	}
 	
 	@RequestMapping("writeProc")
-	public String writeProc(BoardDTO dto) {
+	public String writeProc(BoardDTO dto, FileDTO fdto, MultipartFile[] file) throws Exception{
 		String writer = (String)session.getAttribute("login");	
+		int seq = dao.seqNextval();
 		dto.setWriter(writer);
 		int result = dao.boardWrite(dto);
+		
+		String realPath = session.getServletContext().getRealPath("files");
+		File filesPath = new File(realPath);
+		if(!filesPath.exists()) {filesPath.mkdir();}
+
+		for(MultipartFile tmp : file) {
+			String oriName = tmp.getOriginalFilename();
+			String sysName = UUID.randomUUID().toString().replaceAll("-", "")+"_"+oriName; // 파일이름 안겹치게 해주는 문법
+			
+			tmp.transferTo(new File(filesPath.getAbsolutePath()+"/"+sysName)); //파일 전송하는 목적지
+			
+			fdto.setBoard_seq(seq);
+			fdto.setOriName(oriName);
+			fdto.setSysName(sysName);
+			
+			fdao.fileInsert(fdto);
+		}
 		return "redirect:/bod/boardlist?cpage=1";
 	}
 	
