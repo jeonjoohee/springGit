@@ -1,14 +1,10 @@
 package kh.spring.controller;
 
-import java.io.File;
 import java.util.List;
-import java.util.UUID;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +12,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import kh.spring.config.BoardConfig;
 import kh.spring.dto.BoardDTO;
 import kh.spring.dto.FilesDTO;
 import kh.spring.service.BoardService;
@@ -27,12 +22,6 @@ import kh.spring.service.FilesService;
 @RequestMapping("/bod")
 public class BoardController {
 
-//	@Autowired
-//	private BoardDAO dao;
-//
-//	@Autowired
-//	private FilesDAO fdao;
-//
 	@Autowired
 	private HttpSession session;
 	
@@ -42,21 +31,10 @@ public class BoardController {
 	@Autowired
 	private FilesService fservice;
 	
-	
-
 	@RequestMapping("boardWrite")
 	public String boardWrite() {
 		return "board/boardWrite";
 	}
-
-	//	@RequestMapping("writeProc")
-	//	public String writeProc(BoardDTO dto) {
-	//		String writer = (String)session.getAttribute("login");	
-	//		dto.setWriter(writer);
-	//		int result = dao.boardWrite(dto);
-	//		return "redirect:/bod/boardlist?cpage=1";
-	//	}
-
 
 	@RequestMapping("writeProc")
 	public String writeProc(String title, String contents, FilesDTO fdto, MultipartFile[] file) throws Exception{
@@ -68,25 +46,10 @@ public class BoardController {
 
 		// 파일도 저장하는거 
 		String realPath = session.getServletContext().getRealPath("files");
-		File filesPath = new File(realPath);
-		if(!filesPath.exists()) {filesPath.mkdir();}
-
-		for(MultipartFile tmp : file) {
-			if(tmp.getSize() > 0) {
-				String oriName = tmp.getOriginalFilename();
-				String sysName = UUID.randomUUID().toString().replaceAll("-", "")+"_"+oriName;
-
-				System.out.println(filesPath.getAbsolutePath());
-				fdto.setParent(seq);
-				fdto.setOriName(oriName);
-				fdto.setSysName(sysName);
-				tmp.transferTo(new File(filesPath.getAbsolutePath()+"/"+sysName));
-
-				fservice.fileInsert(fdto);
-			}
-
-
-		}
+		fdto.setParent(seq);
+		
+		fservice.upload(realPath,fdto,file);
+		
 		return "redirect:/bod/boardlist?cpage=1";
 	}
 
